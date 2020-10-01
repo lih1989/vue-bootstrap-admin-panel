@@ -31,10 +31,10 @@ const defaultFields = function () {
     name: '',
     phone: ''
   }
-}
+};
 
 export default {
-  name: "Filter",
+  name: "FilterBlock",
   components: {FilterTextField},
   data() {
     return {

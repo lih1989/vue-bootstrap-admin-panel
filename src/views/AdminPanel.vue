@@ -22,8 +22,7 @@
             </router-link>
           </li>
           <li class="nav-item mx-1">
-            <a href="/"
-               @click.stop="$store.dispatch('logout')"
+            <a @click.stop="logout"
                class="nav-link">
               Выход
             </a>
@@ -104,6 +103,11 @@ export default {
   methods: {
     toggleSidebar() {
       document.getElementById('sidebar').classList.toggle('active');
+    },
+    logout(){
+      this.$store.dispatch('logout').then(() => {
+        this.$router.push({name: 'Auth'});
+      });
     }
   },
 }

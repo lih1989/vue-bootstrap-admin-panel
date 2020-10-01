@@ -1,9 +1,10 @@
 const delay = function () {
     const randomDelay = Math.random() * 3 * 1000;
     return new Promise(resolve => setTimeout(resolve, randomDelay))
-}
+};
+
 const authRequest = async function ({login, password}) {
-    console.warn('Авторизация пользователя', {login, password})
+    console.warn('Авторизация пользователя', {login, password});
     await delay();
     return new Promise(resolve => {
         return resolve({
@@ -13,7 +14,7 @@ const authRequest = async function ({login, password}) {
             }
         })
     })
-}
+};
 
 const contacts = [
     {fullName: 'Александрова Татьяна', phone: '+79270000001'},
@@ -38,13 +39,11 @@ const contacts = [
 ];
 
 const contactsRequest = async function (filters) {
-    console.warn('Получаю список контактов', filters)
     await delay();
 
     let {name = '', phone = ''} = filters;
     name = name.toLowerCase().trim();
     phone = phone.toLowerCase().trim();
-    console.warn('Получаю список контактов', name, phone)
 
     const searcher = function (item) {
         if (phone && item.phone) {
@@ -54,14 +53,15 @@ const contactsRequest = async function (filters) {
             return item.fullName.toLowerCase().indexOf(name) !== -1
         }
         return true
-    }
+    };
 
     return new Promise(resolve => {
         return resolve({
             list: contacts.filter(searcher)
         })
     })
-}
+};
+
 export {
     authRequest,
     contactsRequest

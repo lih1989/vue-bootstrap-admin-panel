@@ -48,7 +48,7 @@
 <script>
 import {contactsRequest} from '@/api/api'
 import Spinner from "@/components/Spinner";
-import FilterBlock from "@/components/filter/Filter";
+import FilterBlock from "@/components/filter/FilterBlock";
 
 export default {
   name: "Contacts",

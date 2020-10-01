@@ -10,7 +10,7 @@ import Crm from '../views/admin/Crm'
 import NotFound from '../views/NotFound'
 import store from '../store'
 
-Vue.use(VueRouter)
+Vue.use(VueRouter);
 
 const routes = [
     {
@@ -83,16 +83,18 @@ const routes = [
         path: '*',
         redirect: '/404'
     }
-]
+];
 
 const router = new VueRouter({
-    mode: 'history',
-    base: process.env.BASE_URL,
+    mode: 'hash',
+    base:  process.env.NODE_ENV === 'production'
+        ? '/vue-bootstrap-admin-panel/#/'
+        : '/',
     routes
 });
 
 router.beforeEach((to, from, next) => {
-    // console.error(from.name, from.path, ' ---> ', to.name, store.getters['isToken']);
+    // console.warn(from.name, from.path, ' ---> ', to.name, store.getters['isToken']);
     // целевой маршрут требует авторизации?
     if (to.matched.some(route => route.meta.requiresAuth)) {
         // При наличии токена пропускаю дальше
@@ -105,6 +107,6 @@ router.beforeEach((to, from, next) => {
     } else {
         next();
     }
-})
+});
 
 export default router

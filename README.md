@@ -1,5 +1,5 @@
-# vue-bootstrap-admin-panel
-
+# DEMO:
+> https://lih1989.github.io/vue-bootstrap-admin-panel/
 ## Project setup
 ```
 npm install

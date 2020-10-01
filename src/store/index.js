@@ -28,9 +28,12 @@ export default new Vuex.Store({
             });
         },
         logout({commit}) {
-            commit('SET_USER_INFO', {});
-            localStorage.removeItem('token');
-            localStorage.removeItem('info');
+            return new Promise(resolve => {
+                commit('SET_USER_INFO', {});
+                localStorage.removeItem('token');
+                localStorage.removeItem('info');
+                resolve();
+            })
         }
     },
     getters: {
